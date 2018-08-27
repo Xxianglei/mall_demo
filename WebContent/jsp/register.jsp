@@ -159,6 +159,12 @@ font {
 			      <input type="date" class="form-control" name="birthday" >		      
 			    </div>
 			  </div>
+			  <div class="form-group">
+			    <label for="date" class="col-sm-2 control-label">电话</label>
+			    <div class="col-sm-6">
+			      <input type="tel" class="form-control" name="telephone" >		      
+			    </div>
+			  </div>
 			  
 			  <div class="form-group">
 			    <label for="date" class="col-sm-2 control-label">验证码</label>

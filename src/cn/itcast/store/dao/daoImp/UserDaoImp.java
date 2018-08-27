@@ -10,16 +10,19 @@ import cn.itcast.store.utils.JDBCUtils;
 
 public class UserDaoImp implements UserDao {
 
-	public void userRegist(User user) {
+	public boolean userRegist(User user) {
 	
 			String sql="INSERT INTO USER VALUES(?,?,?,?,?,?,?,?,?,?)";
 			Object[] params={user.getUid(),user.getUsername(),user.getPassword(),user.getName(),user.getEmail(),user.getTelephone(),user.getBirthday(),user.getSex(),user.getState(),user.getCode()};
 			QueryRunner qr=new QueryRunner(JDBCUtils.getDataSource());
 			try {
 				qr.update(sql,params);
+				return true;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
+			
 				e.printStackTrace();
+				return false;
 			}
 		
 		

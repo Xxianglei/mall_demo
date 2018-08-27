@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,7 @@ import cn.itcast.store.domian.User;
 import cn.itcast.store.service.UserService;
 import cn.itcast.store.service.serviceImp.UserServiceImp;
 import cn.itcast.store.utils.MyBeanUtils;
+import cn.itcast.store.utils.UUIDUtils;
 import cn.itcast.store.web.base.BaseServlet;
 
 public class UserServlet extends BaseServlet {
@@ -33,9 +35,11 @@ public class UserServlet extends BaseServlet {
 		// 接收表单数据
 		Map<String, String[]> map = req.getParameterMap();
 		User user = new User();
-
+		user.setUid(UUIDUtils.getId());
+		user.setState(0);
+user.setCode(UUIDUtils.getCode());
 		MyBeanUtils.populate(user, map);
-		//System.out.println(user.toString());
+		// System.out.println(user.toString());
 
 		Set<String> keySet = map.keySet();
 		Iterator<String> iterator = keySet.iterator();
@@ -49,18 +53,16 @@ public class UserServlet extends BaseServlet {
 		}
 		System.out.println();
 		// 调用业务层注册
-		UserService userService=new UserServiceImp();
-		boolean flag=userService.userRegist(user);
+		UserService userService = new UserServiceImp();
+		boolean flag = userService.userRegist(user);
 		if (flag) {
 			// 成功跳转
 			req.setAttribute("msg", "注册成功");
-		}
-		else {
+		} else {
 			// 失败跳转
 			req.setAttribute("msg", "注册失败");
 		}
-		
-		
+
 		return "/jsp/info.jsp";
 	}
 }
