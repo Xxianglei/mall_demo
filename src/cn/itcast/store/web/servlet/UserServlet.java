@@ -53,13 +53,14 @@ public class UserServlet extends BaseServlet {
 		boolean flag=userService.userRegist(user);
 		if (flag) {
 			// 成功跳转
-			return "/jsp/info.jsp";
+			req.setAttribute("msg", "注册成功");
 		}
 		else {
 			// 失败跳转
+			req.setAttribute("msg", "注册失败");
 		}
 		
 		
-		return "";
+		return "/jsp/info.jsp";
 	}
 }
