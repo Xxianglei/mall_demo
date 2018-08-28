@@ -8,6 +8,12 @@ public interface UserDao {
 
 	boolean userRegist(User user);
 
+	User active(String code);
+
+	void updateUser(User user);
+
+	User userLogin(User user);
+
 	
 
 }
