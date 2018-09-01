@@ -12,7 +12,7 @@ public interface UserDao {
 
 	void updateUser(User user);
 
-	User userLogin(User user);
+	 User userLogin(User user);
 
 	
 
